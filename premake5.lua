@@ -1,9 +1,14 @@
+-- delete a file if the clean action is running
+if _ACTION == "clean" then
+   os.rmdir("build")
+end
+
 project "imgui"
 	kind "StaticLib"
 	language "C++"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    objdir "build/obj"
+    targetdir "build/bin"
+    location "build"
 
 	files
 	{
